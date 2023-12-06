@@ -1,0 +1,60 @@
+<div class="container">
+  <h3 class="text-primary text-center">Employee Form Details</h3>
+</div>
+
+<div class="container">
+  <form [formGroup]="employeeForm">
+    <div class="form-group">
+      <label for="name">name</label>
+      <input id="name" class="form-control" type="text" formControlName="userName">
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['userName'].errors?.['required']">name is required</span>
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['userName'].errors?.['min']">min leght is 6</span>
+
+    </div>
+    <div class="form-group">
+      <label for="name">email:</label>
+      <input id="email" class="form-control" type="text" formControlName="email">
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['email'].errors?.['required']">email is required</span>
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['email'].errors">email is not in specific format</span>
+
+    </div>
+
+    <div class="form-group">
+      <label for="phone">phone</label>
+      <input id="email" class="form-control" type="number" formControlName="phone">
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['phone'].errors?.['required']">phone is required</span>
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['phone'].errors">phone is not in format</span>
+
+    </div>
+
+
+    <div class="form-group">
+      <label for="address">address</label>
+      <input id="address" class="form-control" type="text" formControlName="address">
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['address'].errors?.['required']">address is required</span>
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['address'].errors">address is not in format</span>
+
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="salary">salary:</label>
+      <input id="salary" class="form-control" type="number" formControlName="salary">
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['salary'].errors?.['required']">salary is required</span>
+      <span class="alert alert-danger" *ngIf="employeeForm.controls['salary'].errors?.['min']">salary is not in format</span>
+
+    </div>
+    <button class="btn btn-primary" (click)="addEmployee()" [disabled]="employeeForm.invalid || employeeForm.pristine">Submit</button>
+    <br/>
+
+    <div *ngIf="message!=null">
+      <span class="text-success">{{message}}</span>
+    </div>
+
+    <div *ngIf="erroMessage!=null">
+      <span class="text-danger">{{erroMessage}}</span>
+    </div>
+  </form>
+
+</div>
